@@ -10,7 +10,6 @@ import webserver.http.response.enums.HttpStatus;
 import java.io.IOException;
 
 public class StaticRoutingManager {
-    public static final byte[] NOT_FOUND_MESSAGE = "The requested resource was not found on this server.".getBytes();
     private static final StaticRoutingManager instance = new StaticRoutingManager();
 
     private StaticRoutingManager(){}
@@ -32,6 +31,6 @@ public class StaticRoutingManager {
 
             return httpResponse;
         }
-        return HttpResponseBuilder.getInstance().createErrorResponse(HttpStatus.NOT_FOUND, NOT_FOUND_MESSAGE);
+        return HttpResponseBuilder.getInstance().createRedirectResponse(HttpStatus.FOUND, "/404.html");
     }
 }
