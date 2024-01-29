@@ -11,7 +11,7 @@ import webserver.http.response.enums.HttpStatus;
 
 import java.io.IOException;
 
-public class QnaController {
+public class PostController {
 
     public HttpResponse getPostForm(HttpRequest request) throws IOException {
         String sessionId = request.getSessionId();

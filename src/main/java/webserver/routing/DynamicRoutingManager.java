@@ -1,6 +1,6 @@
 package webserver.routing;
 
-import controller.QnaController;
+import controller.PostController;
 import controller.UserController;
 import webserver.http.request.HttpRequest;
 import webserver.http.request.enums.HttpMethod;
@@ -32,8 +32,8 @@ public class DynamicRoutingManager {
             UserController userController = new UserController();
             return userController.home(httpRequest);
         } else if (httpRequest.getMethod() == HttpMethod.GET && path.equals("/qna/write.html")){
-            QnaController qnaController = new QnaController();
-            return qnaController.getPostForm(httpRequest);
+            PostController postController = new PostController();
+            return postController.getPostForm(httpRequest);
         }
         return null;
     }
