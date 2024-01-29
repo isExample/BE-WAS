@@ -34,6 +34,9 @@ public class DynamicRoutingManager {
         } else if (httpRequest.getMethod() == HttpMethod.GET && path.equals("/qna/write.html")){
             PostController postController = new PostController();
             return postController.getPostForm(httpRequest);
+        } else if (httpRequest.getMethod() == HttpMethod.POST && path.equals("/post/create")){
+            PostController postController = new PostController();
+            return postController.writePost(httpRequest);
         }
         return null;
     }
