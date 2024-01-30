@@ -1,11 +1,10 @@
-package user;
+package service;
 
 import db.Database;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import service.UserService;
 
 import java.util.HashMap;
 import java.util.Map;
