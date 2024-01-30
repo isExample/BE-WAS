@@ -38,7 +38,10 @@ public class ResourceReader {
 
     public String getFileTemplate(String path) throws IOException {
         byte[] fileContents = getFileContents(path);
-        return new String(fileContents);
+        if (fileContents != null) {
+            return new String(fileContents);
+        }
+        return null;
     }
 
     public String getFileExtension(String path){
