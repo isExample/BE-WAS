@@ -10,8 +10,7 @@ import service.UserService;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UserServiceTest {
 
@@ -83,4 +82,40 @@ public class UserServiceTest {
         assertFalse(result);
     }
 
+    @Test
+    @DisplayName("유효한 로그인 자격 증명 시 null이 아닌 sessionId를 반환한다")
+    void loginSuccess() {
+        // Given
+        Map<String, String> userData = new HashMap<>();
+        userData.put("userId", "testUser");
+        userData.put("password", "testPassword");
+        userData.put("name", "testUser");
+        userData.put("email", "test@test.com");
+        userService.signUp(userData);
+
+        Map<String, String> loginData = new HashMap<>();
+        loginData.put("userId", "testUser");
+        loginData.put("password", "testPassword");
+
+        // When
+        String sessionId = userService.login(loginData);
+
+        // Then
+        assertNotNull(sessionId);
+    }
+
+    @Test
+    @DisplayName("유효하지 않은 로그인 자격 증명이 주어지면 로그인 시 null을 반환한다")
+    void testLoginFailure() {
+        // Given
+        Map<String, String> invalidLoginData = new HashMap<>();
+        invalidLoginData.put("userId", "testUser");
+        invalidLoginData.put("password", "testPassword");
+
+        // When
+        String sessionId = userService.login(invalidLoginData);
+
+        // Then
+        assertNull(sessionId);
+    }
 }
